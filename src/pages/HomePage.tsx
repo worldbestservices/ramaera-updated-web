@@ -339,7 +339,7 @@ const HomePage: React.FC = () => {
             </AnimatedSection>
           </div>
         </section>
-      </section>
+      </ParallaxSection>
 
       {/* Impact Highlights Section */}
       <section className="py-16 md:py-24 bg-black relative overflow-hidden">

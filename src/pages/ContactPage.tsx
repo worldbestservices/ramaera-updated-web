@@ -14,6 +14,7 @@ import {
 import AnimatedSection from '../components/AnimatedSection'
 import EnhLogo from '../components/EnhLogo'
 import { useContactStore} from '../store/contactStore'
+import toast from 'react-hot-toast'
 
 const ContactPage: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -31,6 +32,19 @@ const ContactPage: React.FC = () => {
     resetState
   } = useContactStore()
 
+  // Handle success and error states
+  React.useEffect(() => {
+    if (success) {
+      toast.success("Message sent successfully! We'll get back to you within 24 hours.");
+      resetState();
+    }
+    
+    if (error) {
+      toast.error(error || 'Failed to send message. Please try again.');
+      resetState();
+    }
+  }, [success, error, resetState]);
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target
     setFormData(prev => ({
@@ -45,8 +59,9 @@ const ContactPage: React.FC = () => {
     e.preventDefault()
     await submitMessage(formData)
 
-    console.log("THis is the contact form error====", error);
-    setFormData({ name: '', email: '', subject: '', message: '' })
+    if (!error) {
+      setFormData({ name: '', email: '', subject: '', message: '' })
+    }
   }
 
   const contactInfo = [
@@ -129,30 +144,6 @@ const ContactPage: React.FC = () => {
               <div className="bg-black rounded-2xl shadow-lg p-8 boder border-gray-200">
                 <h2 className="text-3xl font-bold text-gray-300 mb-6">Send us a Message</h2>
 
-                {success && (
-                  <div data-testid="success-msg" className="bg-green-50 border border-green-200 rounded-lg p-4 mb-6">
-                    <div className="flex items-center space-x-3">
-                      <CheckCircle className="h-5 w-5 text-green-600" />
-                      <div>
-                        <h3 className="text-green-800 font-semibold">Message Sent Successfully!</h3>
-                        <p className="text-green-700">We'll get back to you within 24 hours.</p>
-                      </div>
-                    </div>
-                  </div>
-                )}
-
-                {error && (
-                  <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6">
-                    <div className="flex items-center space-x-3">
-                      <CheckCircle className="h-5 w-5 text-red-600" />
-                      <div>
-                        <h3 className="text-red-800 font-semibold">Submission Failed</h3>
-                        <p data-testid="error-msg" className="text-red-700">{error}</p>
-                      </div>
-                    </div>
-                  </div>
-                )}
-
                 <form onSubmit={handleSubmit} className="space-y-6 ">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
@@ -226,7 +217,7 @@ const ContactPage: React.FC = () => {
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full flex items-center justify-center px-6 py-3 bg-primary-600 text-white font-semibold rounded-lg hover:bg-primary-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
+                    className="w-full flex items-center justify-center px-6 py-3 bg-primary-600 text-white font-semibold rounded-lg hover:bg-primary-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 transform hover:scale-[1.02]"
                   >
                     {loading ? 'Sending...' : (
                       <>

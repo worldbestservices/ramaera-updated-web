@@ -78,15 +78,13 @@ const ApplyFactoryPage: React.FC = () => {
   
   useEffect(() => {
     if (success) {
-      console.log("submitted====",message);
+      toast.success(message || "Application submitted successfully! 🎉");
       resetForm();
       resetState();
     }
   
     if (error) {
-      toast.error(error || 'Submission failed', {
-        id: toastIdRef.current || undefined,
-      });
+      toast.error(error || 'Submission failed. Please try again.');
       resetState();
     }
   }, [success, error, resetForm, resetState]);

@@ -10,11 +10,12 @@
 @layer base {
   html {
     font-family: "Inter", system-ui, sans-serif;
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
   }
 
   body {
     @apply antialiased bg-black text-white overflow-x-hidden;
+    overscroll-behavior: none;
     background-image: radial-gradient(
         circle at 20% 80%,
         rgba(255, 255, 255, 0.05) 0%,
@@ -67,14 +68,8 @@
   /* Enhanced cyber card with 3D effects */
   .cyber-card {
     @apply bg-black/80 border-2 border-white/20 rounded-xl backdrop-blur-xl relative overflow-hidden;
-    background-image: linear-gradient(
-        135deg,
-        rgba(255, 255, 255, 0.05) 0%,
-        rgba(6, 182, 212, 0.05) 100%
-      ),
-      url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    transform-style: preserve-3d;
+    background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(6, 182, 212, 0.05) 100%);
+    transition: all 0.3s ease;
   }
 
   .cyber-card::before {
@@ -90,7 +85,7 @@
       rgba(255, 255, 255, 0.15),
       transparent
     );
-    transition: left 0.8s;
+    transition: left 0.5s;
     z-index: 1;
   }
 
@@ -109,7 +104,7 @@
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     mask-composite: exclude;
     opacity: 0;
-    transition: opacity 0.5s;
+    transition: opacity 0.3s;
   }
 
   .cyber-card:hover::before {
@@ -121,14 +116,9 @@
   }
 
   .cyber-card:hover {
-    @apply border-white/40 shadow-neon-strong;
-    transform: translateY(-8px) rotateX(5deg) rotateY(2deg);
-    background-image: linear-gradient(
-        135deg,
-        rgba(255, 255, 255, 0.1) 0%,
-        rgba(6, 182, 212, 0.1) 100%
-      ),
-      url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+    @apply border-white/40 shadow-neon;
+    transform: translateY(-2px);
+    background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(6, 182, 212, 0.1) 100%);
   }
 
   /* Enhanced glow button with 3D effects */
@@ -137,7 +127,6 @@
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.3),
       0 0 40px rgba(255, 255, 255, 0.2), inset 0 0 20px rgba(0, 0, 0, 0.1);
     transition: all 0.4s ease;
-    transform-style: preserve-3d;
   }
 
   .glow-button::before {
@@ -153,7 +142,7 @@
       rgba(0, 0, 0, 0.1),
       transparent
     );
-    transition: left 0.6s;
+    transition: left 0.4s;
   }
 
   .glow-button::after {
@@ -168,7 +157,7 @@
     );
     border-radius: inherit;
     opacity: 0;
-    transition: opacity 0.4s;
+    transition: opacity 0.3s;
   }
 
   .glow-button:hover::before {
@@ -180,7 +169,7 @@
   }
 
   .glow-button:hover {
-    transform: translateY(-3px) scale(1.05) rotateX(5deg);
+    transform: translateY(-2px) scale(1.02);
     box-shadow: 0 0 30px rgba(255, 255, 255, 0.5),
       0 0 60px rgba(255, 255, 255, 0.3), 0 0 90px rgba(255, 255, 255, 0.2),
       inset 0 0 30px rgba(0, 0, 0, 0.2);
@@ -188,7 +177,7 @@
 
   /* Enhanced golden accent with pulsing effect */
   .golden-accent {
-    @apply text-orange-700;
+    @apply text-yellow-400;
     text-shadow: inset 0 0 20px rgba(255, 255, 255, 0.1),
       0 0 20px rgba(255, 255, 255, 0.2), 0 0 40px rgba(255, 255, 255, 0.1);
     animation: neonPulse 4s ease-in-out infinite alternate;
@@ -200,7 +189,7 @@
     background-image: linear-gradient(
       45deg,
       #ffffff,
-      #06b6d4,
+      #22d3ee,
       #fbbf24,
       #ffffff
     );
@@ -212,7 +201,7 @@
   .neon-border {
     @apply border-2 border-white/30 rounded-xl relative;
     box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.1),
-      0 0 20px rgba(255, 255, 255, 0.2), 0 0 40px rgba(255, 255, 255, 0.1);
+      0 0 15px rgba(255, 255, 255, 0.2);
     animation: borderGlow 3s ease-in-out infinite alternate;
   }
 
@@ -223,11 +212,11 @@
     left: -2px;
     right: -2px;
     bottom: -2px;
-    background: linear-gradient(45deg, #ffffff, #06b6d4, #fbbf24, #ffffff);
+    background: linear-gradient(45deg, #ffffff, #22d3ee, #fbbf24, #ffffff);
     background-size: 400% 400%;
     border-radius: inherit;
     z-index: -1;
-    animation: hologram 6s ease-in-out infinite;
+    animation: hologram 4s ease-in-out infinite;
     opacity: 0;
     transition: opacity 0.4s;
   }
@@ -241,7 +230,7 @@
     background: linear-gradient(
       90deg,
       transparent,
-      rgba(255, 255, 255, 0.3),
+      rgba(255, 255, 255, 0.2),
       transparent
     );
     background-size: 200% 100%;
@@ -250,7 +239,7 @@
 
   /* Enhanced floating animation with 3D rotation */
   .floating-icon {
-    animation: float3D 6s ease-in-out infinite;
+    animation: float 3s ease-in-out infinite;
   }
 
   /* Enhanced pulse glow with color cycling */
@@ -284,7 +273,7 @@
         transparent 77%,
         transparent
       );
-    background-size: 60px 60px, 60px 60px;
+    background-size: 40px 40px, 40px 40px;
     animation: matrixFlow 25s linear infinite;
   }
 
@@ -293,7 +282,7 @@
     background: linear-gradient(
       45deg,
       #ffffff,
-      #06b6d4,
+      #22d3ee,
       #fbbf24,
       #ff6b6b,
       #ffffff
@@ -305,7 +294,6 @@
     background-clip: text;
     font-weight: 800;
     text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
-    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2));
   }
 
   /* Enhanced data stream */
@@ -324,8 +312,8 @@
     background: linear-gradient(
       to bottom,
       transparent,
-      #ffffff,
-      #06b6d4,
+      #22d3ee,
+      #fbbf24,
       transparent
     );
     animation: dataStreamFlow 4s linear infinite;
@@ -334,10 +322,10 @@
   /* Enhanced cyber grid background */
   .cyber-grid-bg {
     background-image: linear-gradient(
-        rgba(255, 255, 255, 0.05) 1px,
+        rgba(255, 255, 255, 0.03) 1px,
         transparent 1px
       ),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
     background-size: 40px 40px;
     animation: gridShift 20s linear infinite;
   }
@@ -347,8 +335,8 @@
     @apply relative overflow-hidden rounded-xl;
     background: linear-gradient(
       45deg,
-      rgba(255, 255, 255, 0.1),
-      rgba(6, 182, 212, 0.1)
+      rgba(255, 255, 255, 0.05),
+      rgba(34, 211, 238, 0.05)
     );
   }
 
@@ -362,7 +350,7 @@
     background: linear-gradient(
       45deg,
       transparent 30%,
-      rgba(255, 255, 255, 0.15) 50%,
+      rgba(255, 255, 255, 0.1) 50%,
       transparent 70%
     );
     animation: cyberScanAdvanced 4s ease-in-out infinite;
@@ -376,7 +364,7 @@
     background: radial-gradient(
       circle at center,
       transparent 40%,
-      rgba(0, 0, 0, 0.3) 100%
+      rgba(0, 0, 0, 0.2) 100%
     );
     opacity: 0;
     transition: opacity 0.4s;
@@ -389,17 +377,17 @@
 
   .gif-container img {
     transition: all 0.4s ease;
-    filter: brightness(0.8) contrast(1.2) saturate(1.1);
+    filter: brightness(0.9) contrast(1.1) saturate(1.05);
   }
 
   .gif-container:hover img {
-    filter: brightness(1.1) contrast(1.4) saturate(1.3) hue-rotate(10deg);
-    transform: scale(1.08) rotateZ(1deg);
+    filter: brightness(1.05) contrast(1.2) saturate(1.15);
+    transform: scale(1.03);
   }
 
   /* Enhanced liquid morph */
   .liquid-morph {
-    animation: liquidMorphAdvanced 12s ease-in-out infinite;
+    animation: liquidMorphAdvanced 8s ease-in-out infinite;
   }
 
   /* Enhanced glitch hover */
@@ -409,12 +397,11 @@
   }
 
   .glitch-hover:hover {
-    animation: glitchAdvanced 0.4s ease-in-out;
+    animation: glitchAdvanced 0.2s ease-in-out;
   }
 
   /* Enhanced tilt card with depth */
   .tilt-card {
-    transform-style: preserve-3d;
     transition: transform 0.4s ease;
   }
 
@@ -426,13 +413,13 @@
 
   .reveal-text {
     opacity: 0;
-    transform: translateY(40px) scale(0.95);
+    transform: translateY(20px) scale(0.98);
     filter: blur(8px);
   }
 
   .stagger-grid .stagger-item {
     opacity: 0;
-    transform: translateY(100px) scale(0.7) rotateX(45deg);
+    transform: translateY(50px) scale(0.9);
   }
 
   /* Enhanced typewriter */
@@ -446,7 +433,6 @@
   /* Enhanced magnetic effect */
   .magnetic {
     transition: transform 0.4s ease;
-    transform-style: preserve-3d;
   }
 
   .scroll-text {
@@ -462,7 +448,7 @@
   @media (max-width: 768px) {
     .cyber-card {
       @apply mx-2;
-      transform: none !important;
+      transform: translateY(0) !important;
     }
 
     .glow-button {
@@ -478,18 +464,14 @@
     }
 
     .tilt-card {
-      transform: none !important;
-    }
-
-    .magnetic {
-      transform: none !important;
+      transform: translateY(0) !important;
     }
   }
 }
 
 /* Enhanced custom scrollbar */
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -499,14 +481,14 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, #ffffff, #06b6d4, #fbbf24);
+  background: linear-gradient(to bottom, #ffffff, #22d3ee, #fbbf24);
   border-radius: 8px;
   border: 2px solid #000000;
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(to bottom, #f0f0f0, #0891b2, #f59e0b);
+  background: linear-gradient(to bottom, #f0f0f0, #06b6d4, #f59e0b);
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
 }
 
@@ -518,29 +500,27 @@
 
 /* Enhanced button hover effects */
 .btn-hover-lift {
-  @apply transition-all duration-300 transform hover:scale-110 hover:shadow-neon-strong;
-  transform-style: preserve-3d;
+  @apply transition-all duration-200 transform hover:scale-105 hover:shadow-neon;
 }
 
 .btn-hover-lift:hover {
-  transform: translateY(-5px) scale(1.1) rotateX(5deg);
+  transform: translateY(-2px) scale(1.05);
 }
 
 /* Enhanced card hover effects */
 .card-hover {
-  @apply transition-all duration-300 hover:shadow-neon-strong;
-  transform-style: preserve-3d;
+  @apply transition-all duration-200 hover:shadow-neon;
 }
 
 .card-hover:hover {
-  transform: translateY(-10px) rotateX(5deg) rotateY(2deg);
+  transform: translateY(-3px);
 }
 
 /* Enhanced keyframe animations */
 @keyframes fadeIn {
   0% {
     opacity: 0;
-    transform: translateY(30px) scale(0.9);
+    transform: translateY(15px) scale(0.98);
   }
   100% {
     opacity: 1;
@@ -550,7 +530,7 @@
 
 @keyframes slideUp {
   0% {
-    transform: translateY(50px) scale(0.95);
+    transform: translateY(25px) scale(0.98);
     opacity: 0;
   }
   100% {
@@ -565,7 +545,7 @@
     transform: translateY(0) rotateZ(0deg);
   }
   50% {
-    transform: translateY(-15px) rotateZ(2deg);
+    transform: translateY(-8px) rotateZ(1deg);
   }
 }
 
@@ -575,11 +555,11 @@
     filter: brightness(1);
   }
   50% {
-    box-shadow: 0 0 40px rgba(6, 182, 212, 0.6);
+    box-shadow: 0 0 30px rgba(34, 211, 238, 0.5);
     filter: brightness(1.2);
   }
   100% {
-    box-shadow: 0 0 60px rgba(251, 191, 36, 0.8);
+    box-shadow: 0 0 40px rgba(251, 191, 36, 0.6);
     filter: brightness(1.4);
   }
 }
@@ -587,16 +567,16 @@
 @keyframes float3D {
   0%,
   100% {
-    transform: translateY(0) rotateX(0deg) rotateY(0deg);
+    transform: translateY(0);
   }
   25% {
-    transform: translateY(-20px) rotateX(5deg) rotateY(5deg);
+    transform: translateY(-10px);
   }
   50% {
-    transform: translateY(-10px) rotateX(-5deg) rotateY(10deg);
+    transform: translateY(-5px);
   }
   75% {
-    transform: translateY(-15px) rotateX(5deg) rotateY(-5deg);
+    transform: translateY(-8px);
   }
 }
 
@@ -612,11 +592,11 @@
 @keyframes borderGlow {
   0% {
     border-color: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
   }
   100% {
     border-color: rgba(255, 255, 255, 0.6);
-    box-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
   }
 }
 
@@ -625,7 +605,7 @@
     transform: translateY(0);
   }
   100% {
-    transform: translateY(-60px);
+    transform: translateY(-40px);
   }
 }
 
@@ -636,21 +616,21 @@
     transform: scale(1);
   }
   100% {
-    text-shadow: 0 0 10px rgba(251, 191, 36, 0.8),
-      0 0 20px rgba(251, 191, 36, 0.8), 0 0 30px rgba(251, 191, 36, 0.8);
+    text-shadow: 0 0 8px rgba(251, 191, 36, 0.7),
+      0 0 15px rgba(251, 191, 36, 0.7), 0 0 25px rgba(251, 191, 36, 0.7);
     transform: scale(1.02);
   }
 }
 
 @keyframes cyberScanAdvanced {
   0% {
-    transform: translateX(-100%) skewX(-15deg);
+    transform: translateX(-100%) skewX(-10deg);
   }
   50% {
-    transform: translateX(100%) skewX(-15deg);
+    transform: translateX(100%) skewX(-10deg);
   }
   100% {
-    transform: translateX(-100%) skewX(-15deg);
+    transform: translateX(-100%) skewX(-10deg);
   }
 }
 
@@ -658,19 +638,19 @@
   0%,
   100% {
     background-position: 0% 50%;
-    filter: hue-rotate(0deg) brightness(1);
+    filter: hue-rotate(0deg);
   }
   25% {
     background-position: 100% 50%;
-    filter: hue-rotate(90deg) brightness(1.2);
+    filter: hue-rotate(90deg);
   }
   50% {
     background-position: 100% 100%;
-    filter: hue-rotate(180deg) brightness(1.1);
+    filter: hue-rotate(180deg);
   }
   75% {
     background-position: 0% 100%;
-    filter: hue-rotate(270deg) brightness(1.3);
+    filter: hue-rotate(270deg);
   }
 }
 
@@ -689,11 +669,11 @@
 @keyframes liquidMorphAdvanced {
   0%,
   100% {
-    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    border-radius: 50% 40% 30% 60% / 50% 30% 60% 40%;
     transform: rotate(0deg) scale(1);
   }
   25% {
-    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+    border-radius: 30% 50% 60% 40% / 40% 50% 30% 50%;
     transform: rotate(90deg) scale(1.05);
   }
   50% {
@@ -701,7 +681,7 @@
     transform: rotate(180deg) scale(0.95);
   }
   75% {
-    border-radius: 70% 30% 40% 60% / 40% 70% 60% 30%;
+    border-radius: 60% 30% 40% 50% / 40% 60% 50% 30%;
     transform: rotate(270deg) scale(1.02);
   }
 }
@@ -720,43 +700,34 @@
   0%,
   100% {
     transform: translate(0);
-    filter: hue-rotate(0deg);
+    filter: none;
   }
   10% {
-    transform: translate(-2px, 2px);
-    filter: hue-rotate(90deg);
+    transform: translate(-1px, 1px);
   }
   20% {
-    transform: translate(-2px, -2px);
-    filter: hue-rotate(180deg);
+    transform: translate(-1px, -1px);
   }
   30% {
-    transform: translate(2px, 2px);
-    filter: hue-rotate(270deg);
+    transform: translate(1px, 1px);
   }
   40% {
-    transform: translate(2px, -2px);
-    filter: hue-rotate(360deg);
+    transform: translate(1px, -1px);
   }
   50% {
     transform: translate(-1px, 1px);
-    filter: hue-rotate(45deg);
   }
   60% {
     transform: translate(-1px, -1px);
-    filter: hue-rotate(135deg);
   }
   70% {
     transform: translate(1px, 1px);
-    filter: hue-rotate(225deg);
   }
   80% {
     transform: translate(1px, -1px);
-    filter: hue-rotate(315deg);
   }
   90% {
     transform: translate(-1px, 1px);
-    filter: hue-rotate(180deg);
   }
 }
 
@@ -765,7 +736,7 @@
     transform: translate(0, 0);
   }
   100% {
-    transform: translate(40px, 40px);
+    transform: translate(20px, 20px);
   }
 }
 
@@ -782,4 +753,9 @@
 /* Loading animations */
 .loading-pulse {
   animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Toast container positioning */
+.toast-container {
+  z-index: 9999 !important;
 }

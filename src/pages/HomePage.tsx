@@ -176,16 +176,16 @@ const HomePage: React.FC = () => {
 
   // React Spring animations
   const heroSpring = useSpring({
-    from: { opacity: 0, transform: 'scale(0.8) rotateY(45deg)' },
-    to: { opacity: 1, transform: 'scale(1) rotateY(0deg)' },
-    config: { tension: 200, friction: 25 },
-    delay: 500
+    from: { opacity: 0, transform: 'scale(0.95)' },
+    to: { opacity: 1, transform: 'scale(1)' },
+    config: { tension: 150, friction: 20 },
+    delay: 300
   })
 
   const logoSpring = useSpring({
-    from: { transform: 'scale(0) rotate(-180deg)', opacity: 0 },
-    to: { transform: 'scale(1) rotate(0deg)', opacity: 1 },
-    config: { tension: 300, friction: 30 },
+    from: { transform: 'scale(0.8)', opacity: 0 },
+    to: { transform: 'scale(1)', opacity: 1 },
+    config: { tension: 200, friction: 25 },
     delay: 200
   })
 
@@ -200,29 +200,29 @@ const HomePage: React.FC = () => {
             src="https://images.pexels.com/photos/1108101/pexels-photo-1108101.jpeg?auto=compress&cs=tinysrgb&w=1920"
             alt="Industrial Manufacturing"
             className="absolute inset-0 w-full h-full object-cover opacity-30"
-            style={{ y }}
+            style={{ y: useTransform(scrollYProgress, [0, 1], ["0%", "20%"]) }}
           />
           <motion.img
             src="https://images.pexels.com/photos/4198015/pexels-photo-4198015.jpeg?auto=compress&cs=tinysrgb&w=1920"
             alt="Factory Operations"
             className="absolute inset-0 w-full h-full object-cover opacity-20 mix-blend-overlay"
-            style={{ y: useTransform(scrollYProgress, [0, 1], ["0%", "30%"]) }}
+            style={{ y: useTransform(scrollYProgress, [0, 1], ["0%", "15%"]) }}
           />
         </div>
 
         <div className="absolute inset-0 cyber-grid-bg opacity-10 z-5"></div>
 
         {/* Parallax background elements */}
-        <motion.div style={{ y, opacity }} className="absolute inset-0 z-5">
+        <motion.div style={{ y: useTransform(scrollYProgress, [0, 1], ["0%", "10%"]), opacity }} className="absolute inset-0 z-5">
           <motion.div
             className="absolute top-20 left-10 w-64 h-64 md:w-96 md:h-96 bg-white/5 rounded-full blur-xl md:blur-3xl"
             animate={{
-              scale: [1, 1.2, 1],
-              x: [0, 50, 0],
-              y: [0, -30, 0]
+              scale: [1, 1.1, 1],
+              x: [0, 30, 0],
+              y: [0, -20, 0]
             }}
             transition={{
-              duration: 12,
+              duration: 8,
               repeat: Infinity,
               ease: "easeInOut"
             }}
@@ -230,15 +230,15 @@ const HomePage: React.FC = () => {
           <motion.div
             className="absolute bottom-20 right-10 w-56 h-56 md:w-80 md:h-80 bg-accent-500/10 rounded-full blur-xl md:blur-3xl"
             animate={{
-              scale: [1, 1.2, 1],
-              x: [0, -40, 0],
-              y: [0, 40, 0]
+              scale: [1, 1.1, 1],
+              x: [0, -30, 0],
+              y: [0, 30, 0]
             }}
             transition={{
-              duration: 15,
+              duration: 10,
               repeat: Infinity,
               ease: "easeInOut",
-              delay: 3
+              delay: 2
             }}
           />
         </motion.div>
@@ -248,9 +248,9 @@ const HomePage: React.FC = () => {
             {/* Enhanced logo showcase */}
             <motion.div
               className="mb-8 md:mb-12 flex justify-center items-center"
-              initial={{ scale: 0, rotate: -180 }}
-              animate={{ scale: 1, rotate: 0 }}
-              transition={{ duration: 1.5, ease: "easeOut" }}
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 1, ease: "easeOut" }}
             >
               <EnhLogo size="lg" variant="floating" className="w-32 h-32 md:w-48 md:h-48" />
             </motion.div>
@@ -258,28 +258,20 @@ const HomePage: React.FC = () => {
             <animated.div style={heroSpring}>
               <motion.h1
                 className="hero-title text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-4 md:mb-8 leading-tight font-['Orbitron']"
-                initial={{ opacity: 0, y: 50 }}
+                initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, delay: 0.5 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
               >
                 <motion.span
                   className="holographic block mb-2 md:mb-4 text-3xl md:text-5xl lg:text-6xl"
-                  animate={{
-                    backgroundPosition: ['0% 50%', '100% 50%', '0% 50%']
-                  }}
-                  transition={{
-                    duration: 5,
-                    repeat: Infinity,
-                    ease: "linear"
-                  }}
                 >
                   TURN KNOWLEDGE INTO LEGACY
                 </motion.span>
                 <motion.span
                   className="block text-xl md:text-3xl lg:text-4xl mt-4 md:mt-6 text-white"
-                  initial={{ opacity: 0, scale: 0.8 }}
+                  initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 1, delay: 1 }}
+                  transition={{ duration: 0.6, delay: 0.6 }}
                 >
                   Become a Co-Owner of Real Indian Factories
                 </motion.span>
@@ -288,9 +280,9 @@ const HomePage: React.FC = () => {
 
             <motion.p
               className="hero-subtitle text-base md:text-lg lg:text-xl xl:text-2xl mb-8 md:mb-12 text-gray-300 max-w-3xl md:max-w-5xl mx-auto leading-relaxed"
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 1.2 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
             >
               Welcome to <span className="text-orange-700 font-bold">RAMAERA INDUSTRIES LTD</span>, India's first community-owned public limited company.
               Build real factories. Share real profits. Shape India's future — become a <span className="text-white font-bold">RAMAERA SHAREHOLDER</span>.
@@ -298,24 +290,14 @@ const HomePage: React.FC = () => {
 
             <motion.div
               className="hero-buttons flex flex-col sm:flex-row gap-3 md:gap-6 justify-center items-center"
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 1.5 }}
+              transition={{ duration: 0.6, delay: 1 }}
             >
               <MagneticButton onClick={() => navigate('shareholder')} className="inline-flex items-center px-6 py-3 md:px-8 md:py-4 glow-button btn-hover-lift text-sm md:text-lg font-bold">
-                <motion.div
-                  animate={{ rotate: [0, 360] }}
-                  transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                >
-                  <Shield className="mr-2 md:mr-3 h-5 w-5 md:h-6 md:w-6" />
-                </motion.div>
+                <Shield className="mr-2 md:mr-3 h-5 w-5 md:h-6 md:w-6" />
                 BECOME A SHAREHOLDER
-                <motion.div
-                  animate={{ x: [0, 5, 0] }}
-                  transition={{ duration: 1, repeat: Infinity }}
-                >
-                  <ArrowRight className="ml-2 md:ml-3 h-5 w-5 md:h-6 md:w-6" />
-                </motion.div>
+                <ArrowRight className="ml-2 md:ml-3 h-5 w-5 md:h-6 md:w-6" />
               </MagneticButton>
 
               <MagneticButton className="inline-flex items-center px-6 py-3 md:px-8 md:py-4 bg-black/80 border border-white/30 text-white font-bold rounded-xl hover:bg-white/10 hover:border-white/50 hover:shadow-neon transition-all duration-300">
@@ -334,7 +316,7 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Vision Quote Section */}
-      <ParallaxSection speed={0.2}>
+      <ParallaxSection speed={0.1}>
         <section className="py-16 md:py-20 bg-gradient-to-r from-black via-white/5 to-black relative overflow-hidden">
           <div className="absolute inset-0 z-0">
             <img
@@ -347,7 +329,7 @@ const HomePage: React.FC = () => {
           <div className="absolute inset-0 cyber-grid-bg opacity-20 z-5"></div>
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
             <AnimatedSection>
-              <Quote className="h-12 w-12 md:h-16 md:w-16 text-secondary-400 mx-auto mb-6 md:mb-8 floating-icon pulse-glow" />
+              <Quote className="h-12 w-12 md:h-16 md:w-16 text-secondary-400 mx-auto mb-6 md:mb-8" />
               <blockquote className="text-xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-6 holographic leading-tight font-['Orbitron']">
                 "We are not raising money — we are raising a nation of industrialists."
               </blockquote>
@@ -357,7 +339,7 @@ const HomePage: React.FC = () => {
             </AnimatedSection>
           </div>
         </section>
-      </ParallaxSection>
+      </section>
 
       {/* Impact Highlights Section */}
       <section className="py-16 md:py-24 bg-black relative overflow-hidden">
@@ -381,16 +363,10 @@ const HomePage: React.FC = () => {
                 <motion.div
                   key={index}
                   className="text-center group"
-                  whileHover={{
-                    scale: 1.05,
-                    transition: { duration: 0.3 }
-                  }}
                 >
                   <div className="cyber-card p-6 md:p-8 h-full relative overflow-hidden">
                     <motion.div
                       className="mb-4 md:mb-6 h-24 md:h-32 relative overflow-hidden rounded-xl"
-                      whileHover={{ scale: 1.05 }}
-                      transition={{ duration: 0.3 }}
                     >
                       <img
                         src={highlight.image}
@@ -400,9 +376,7 @@ const HomePage: React.FC = () => {
                     </motion.div>
 
                     <motion.div
-                      className="inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 bg-black/80 rounded-full mb-4 md:mb-6 group-hover:bg-white/10 transition-all duration-300 pulse-glow border border-white/20"
-                      whileHover={{ rotate: 360 }}
-                      transition={{ duration: 0.5 }}
+                      className="inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 bg-black/80 rounded-full mb-4 md:mb-6 border border-white/20"
                     >
                       <Icon className={`h-8 w-8 md:h-10 md:w-10 ${highlight.color}`} />
                     </motion.div>
@@ -429,8 +403,7 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* How It Works Section */}
-      <ParallaxSection speed={0.1}>
-        <section className="py-16 md:py-24 bg-black relative overflow-hidden">
+      <section className="py-16 md:py-24 bg-black relative overflow-hidden">
           <div className="absolute inset-0 cyber-grid-bg opacity-20"></div>
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <AnimatedSection className="text-center mb-12 md:mb-20">
@@ -449,16 +422,10 @@ const HomePage: React.FC = () => {
                   <motion.div
                     key={index}
                     className="text-center group"
-                    whileHover={{
-                      scale: 1.03,
-                      transition: { duration: 0.3 }
-                    }}
                   >
                     <div className="cyber-card p-6 md:p-8 h-full relative overflow-hidden">
                       <motion.div
                         className="mb-4 md:mb-6 h-24 md:h-32 relative overflow-hidden rounded-xl"
-                        whileHover={{ scale: 1.05 }}
-                        transition={{ duration: 0.3 }}
                       >
                         <img
                           src={step.image}
@@ -469,43 +436,17 @@ const HomePage: React.FC = () => {
 
                       <motion.div
                         className="relative mb-6 md:mb-8"
-                        whileHover={{ scale: 1.1 }}
-                        transition={{ duration: 0.3 }}
                       >
                         <motion.div
-                          className="inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 bg-gradient-to-r from-white to-accent-500 text-black rounded-full text-xl md:text-2xl font-bold group-hover:scale-110 transition-all duration-300 pulse-glow shadow-neon font-['Orbitron']"
-                          animate={{
-                            boxShadow: [
-                              '0 0 10px rgba(255,255,255,0.3)',
-                              '0 0 20px rgba(255,255,255,0.6)',
-                              '0 0 10px rgba(255,255,255,0.3)'
-                            ]
-                          }}
-                          transition={{
-                            duration: 2,
-                            repeat: Infinity,
-                            ease: "easeInOut"
-                          }}
+                          className="inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 bg-gradient-to-r from-white to-accent-500 text-black rounded-full text-xl md:text-2xl font-bold shadow-neon font-['Orbitron']"
                         >
                           {step.number}
                         </motion.div>
                       </motion.div>
 
-                      <motion.div
-                        className="mb-4 md:mb-6"
-                        animate={{
-                          y: [0, -5, 0],
-                          rotate: [0, 3, -3, 0]
-                        }}
-                        transition={{
-                          duration: 4,
-                          repeat: Infinity,
-                          ease: "easeInOut",
-                          delay: index * 0.5
-                        }}
-                      >
+                      <div className="mb-4 md:mb-6">
                         <Icon className="h-10 w-10 md:h-12 md:w-12 text-white mx-auto" />
-                      </motion.div>
+                      </div>
 
                       <h3 className="text-lg md:text-xl font-bold text-white mb-2 md:mb-4 font-['Orbitron']">{step.title}</h3>
                       <p className="text-gray-400 text-xs md:text-sm leading-relaxed">{step.description}</p>
@@ -515,8 +456,7 @@ const HomePage: React.FC = () => {
               })}
             </AnimatedSection>
           </div>
-        </section>
-      </ParallaxSection>
+      </section>
 
       {/* Active Projects Section */}
       <section className="py-16 md:py-24 bg-black relative overflow-hidden">
@@ -557,7 +497,7 @@ const HomePage: React.FC = () => {
                   if (!isHovered) {
                     nextImage();
                   }
-                }, 3000);
+                }, 4000);
 
                 return () => clearInterval(interval);
               }, [isHovered, nextImage, project.images.length]);
@@ -566,7 +506,6 @@ const HomePage: React.FC = () => {
                 <motion.div
                   key={project.id || index}
                   className="cyber-card p-0 overflow-hidden group"
-                  whileHover={{ scale: 1.02 }}
                   onMouseEnter={() => setIsHovered(true)}
                   onMouseLeave={() => setIsHovered(false)}
                 >
@@ -577,7 +516,7 @@ const HomePage: React.FC = () => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        transition={{ duration: 0.5 }}
+                        transition={{ duration: 0.3 }}
                         className="absolute inset-0"
                       >
                         <img
@@ -591,13 +530,13 @@ const HomePage: React.FC = () => {
                     </AnimatePresence>
 
                     {/* Carousel controls */}
-                    <div className="absolute inset-0 flex items-center justify-between px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="absolute inset-0 flex items-center justify-between px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                       <button
                         onClick={(e) => {
                           e.stopPropagation();
                           prevImage();
                         }}
-                        className="bg-black/50 rounded-full p-2 hover:bg-black/70 transition-all z-10"
+                        className="bg-black/60 rounded-full p-2 hover:bg-black/80 transition-all z-10"
                         aria-label="Previous image"
                       >
                         <ChevronLeft className="h-5 w-5 text-white" />
@@ -607,7 +546,7 @@ const HomePage: React.FC = () => {
                           e.stopPropagation();
                           nextImage();
                         }}
-                        className="bg-black/50 rounded-full p-2 hover:bg-black/70 transition-all z-10"
+                        className="bg-black/60 rounded-full p-2 hover:bg-black/80 transition-all z-10"
                         aria-label="Next image"
                       >
                         <ChevronRight className="h-5 w-5 text-white" />
@@ -623,7 +562,7 @@ const HomePage: React.FC = () => {
                             e.stopPropagation();
                             setCurrentImageIndex(idx);
                           }}
-                          className={`h-2 w-2 rounded-full transition-all ${currentImageIndex === idx ? 'bg-white w-4' : 'bg-white/50'}`}
+                          className={`h-1.5 w-1.5 rounded-full transition-all ${currentImageIndex === idx ? 'bg-white w-3' : 'bg-white/50'}`}
                           aria-label={`Go to image ${idx + 1}`}
                         />
                       ))}
@@ -634,7 +573,7 @@ const HomePage: React.FC = () => {
                       className="absolute top-3 right-3 md:top-4 md:right-4 z-10"
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
-                      transition={{ delay: index * 0.2 + 0.5 }}
+                      transition={{ delay: index * 0.1 + 0.3 }}
                     >
                       <span className={`px-3 py-1 rounded-full text-xs md:text-sm font-bold ${project.statusColor}`}>
                         {project.status}
@@ -642,20 +581,9 @@ const HomePage: React.FC = () => {
                     </motion.div>
 
                     {/* Icon */}
-                    <motion.div
-                      className="absolute bottom-3 left-3 md:bottom-4 md:left-4 z-10"
-                      animate={{
-                        scale: [1, 1.05, 1],
-                        rotate: [0, 3, -3, 0]
-                      }}
-                      transition={{
-                        duration: 3,
-                        repeat: Infinity,
-                        ease: "easeInOut"
-                      }}
-                    >
+                    <div className="absolute bottom-3 left-3 md:bottom-4 md:left-4 z-10">
                       <Icon className="h-8 w-8 md:h-10 md:w-10 text-white" />
-                    </motion.div>
+                    </div>
 
                     {/* Progress bar */}
                     <div className="absolute bottom-0 left-0 right-0 h-1.5 md:h-2 bg-black/50">
@@ -663,7 +591,7 @@ const HomePage: React.FC = () => {
                         className="h-full bg-gradient-to-r from-white to-accent-500"
                         initial={{ width: 0 }}
                         whileInView={{ width: `${project.progress}%` }}
-                        transition={{ duration: 2, delay: index * 0.3 }}
+                        transition={{ duration: 1.5, delay: index * 0.2 }}
                         viewport={{ once: true }}
                       />
                     </div>
@@ -699,7 +627,7 @@ const HomePage: React.FC = () => {
                       </div>
                     </div>
                     <button onClick={() => window.open("https://kyc1.ramaera.com/auth/signup", "_blank")}
-                      className="w-full bg-gradient-to-r from-white to-accent-500 text-black py-2 md:py-3 rounded-lg md:rounded-xl hover:from-gray-200 hover:to-accent-400 transition-all duration-300 transform hover:scale-[1.02] font-bold text-xs md:text-sm shadow-neon"
+                      className="w-full bg-gradient-to-r from-white to-accent-500 text-black py-2 md:py-3 rounded-lg md:rounded-xl hover:from-gray-200 hover:to-accent-400 transition-all duration-200 font-bold text-xs md:text-sm shadow-neon"
                       style={{ position: 'relative', zIndex: 1000 }}
                     >
                       VIEW DETAILS
@@ -716,8 +644,7 @@ const HomePage: React.FC = () => {
         </div>
       </section>
       {/* Legacy Goals Section */}
-      <ParallaxSection speed={0.2}>
-        <section className="py-16 md:py-24 bg-gradient-to-r from-black via-white/5 to-black relative overflow-hidden">
+      <section className="py-16 md:py-24 bg-gradient-to-r from-black via-white/5 to-black relative overflow-hidden">
           <div className="absolute inset-0 z-0">
             <img
               src="https://images.pexels.com/photos/1153213/pexels-photo-1153213.jpeg?auto=compress&cs=tinysrgb&w=1920"
@@ -760,10 +687,6 @@ const HomePage: React.FC = () => {
                   <motion.div
                     key={index}
                     className="cyber-card p-4 md:p-6 relative overflow-hidden group"
-                    whileHover={{
-                      scale: 1.03,
-                      transition: { duration: 0.3 }
-                    }}
                   >
                     <div className="absolute inset-0 opacity-20 group-hover:opacity-30 transition-opacity duration-300">
                       <img
@@ -788,25 +711,14 @@ const HomePage: React.FC = () => {
 
               <a href="https://kyc1.ramaera.com/auth/login" target="_blank" rel="noopener noreferrer">
                 <MagneticButton className="inline-flex items-center px-8 py-4 md:px-10 md:py-5 lg:px-12 lg:py-6 glow-button btn-hover-lift text-base md:text-lg lg:text-xl font-bold">
-                  <motion.div
-                    animate={{ rotate: [0, 360] }}
-                    transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                  >
-                    <Rocket className="mr-3 md:mr-4 h-6 w-6 md:h-7 md:w-7" />
-                  </motion.div>
+                  <Rocket className="mr-3 md:mr-4 h-6 w-6 md:h-7 md:w-7" />
                   GET STARTED TODAY
-                  <motion.div
-                    animate={{ x: [0, 8, 0] }}
-                    transition={{ duration: 1.5, repeat: Infinity }}
-                  >
-                    <ArrowRight className="ml-3 md:ml-4 h-6 w-6 md:h-7 md:w-7" />
-                  </motion.div>
+                  <ArrowRight className="ml-3 md:ml-4 h-6 w-6 md:h-7 md:w-7" />
                 </MagneticButton>
               </a>
             </AnimatedSection>
           </div>
-        </section>
-      </ParallaxSection>
+      </section>
     </div>
   )
 }

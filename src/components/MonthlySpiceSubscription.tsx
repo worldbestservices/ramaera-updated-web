@@ -102,16 +102,14 @@ export default function MonthlySpiceSubscription() {
   
   useEffect(() => {
     if (success) {
-      toast.success("Monthly Spices Combo Subscription Successful 🎉", {
-        duration: 4000,
-        style: {
-          background: '#4ade80',
-          color: '#fff',
-          fontWeight: 'bold',
-        },
-      });
+      toast.success("Monthly Spices Combo Subscription Successful! 🎉");
       setCurrentStep(4);
       resetState(); // optional, if you want to reset Zustand state
+    }
+    
+    if (error) {
+      toast.error(error || 'Subscription failed. Please try again.');
+      resetState();
     }
   }, [success]);
 
@@ -152,6 +150,7 @@ export default function MonthlySpiceSubscription() {
       }
     } catch (err) {
       console.error('Subscription error:', err);
+      toast.error('Something went wrong. Please try again.');
     } finally {
       setIsSubmitting(false);
     }

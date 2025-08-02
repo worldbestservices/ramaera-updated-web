@@ -12,32 +12,29 @@ const PageTransition: React.FC<PageTransitionProps> = ({ children }) => {
   const pageVariants = {
     initial: { 
       opacity: 0, 
-      y: 50,
-      scale: 0.95,
-      filter: 'blur(10px)'
+      y: 20,
+      scale: 0.98
     },
     in: { 
       opacity: 1, 
       y: 0,
-      scale: 1,
-      filter: 'blur(0px)'
+      scale: 1
     },
     out: { 
       opacity: 0, 
-      y: -50,
-      scale: 1.05,
-      filter: 'blur(10px)'
+      y: -20,
+      scale: 1.02
     }
   }
 
   const pageTransition = {
     type: 'tween',
-    ease: 'anticipate',
-    duration: 0.6
+    ease: 'easeInOut',
+    duration: 0.3
   }
 
   return (
-    <AnimatePresence mode="wait">
+    <AnimatePresence mode="wait" initial={false}>
       <motion.div
         key={location.pathname}
         initial="initial"

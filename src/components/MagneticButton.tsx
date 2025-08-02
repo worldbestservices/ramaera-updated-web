@@ -11,7 +11,7 @@ interface MagneticButtonProps {
 const MagneticButton: React.FC<MagneticButtonProps> = ({
   children,
   className = '',
-  strength = 0.3,
+  strength = 0.1,
   onClick
 }) => {
   const buttonRef = useRef<HTMLButtonElement>(null)
@@ -19,6 +19,10 @@ const MagneticButton: React.FC<MagneticButtonProps> = ({
   useEffect(() => {
     const button = buttonRef.current
     if (!button) return
+
+    // Disable magnetic effect on mobile
+    const isMobile = window.innerWidth < 768
+    if (isMobile) return
 
     const handleMouseMove = (e: MouseEvent) => {
       const rect = button.getBoundingClientRect()
@@ -28,8 +32,8 @@ const MagneticButton: React.FC<MagneticButtonProps> = ({
       gsap.to(button, {
         x: x * strength,
         y: y * strength,
-        duration: 0.3,
-        ease: "power2.out"
+        duration: 0.2,
+        ease: "power1.out"
       })
     }
 
@@ -37,8 +41,8 @@ const MagneticButton: React.FC<MagneticButtonProps> = ({
       gsap.to(button, {
         x: 0,
         y: 0,
-        duration: 0.5,
-        ease: "elastic.out(1, 0.3)"
+        duration: 0.3,
+        ease: "power2.out"
       })
     }
 

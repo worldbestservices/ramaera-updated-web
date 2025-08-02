@@ -24,34 +24,34 @@ const EnhLogo: React.FC<EnhLogoProps> = ({
   const logoVariants = {
     static: {},
     floating: {
-      y: [0, 3, 0], // Reduced movement for mobile
+      y: [0, -5, 0],
       transition: {
-        duration: 4,
+        duration: 3,
         repeat: Infinity,
         ease: "easeInOut"
       }
     },
     spinning: {
-      scale: [1, 1.05, 1], // Reduced scale for mobile
+      rotate: [0, 360],
       transition: {
-        duration: 2,
+        duration: 8,
         repeat: Infinity,
-        ease: "easeInOut"
+        ease: "linear"
       }
     },
     pulsing: {
-      scale: [1, 1.1, 1], // Reduced scale for mobile
+      scale: [1, 1.05, 1],
       transition: {
-        duration: 2,
+        duration: 2.5,
         repeat: Infinity,
         ease: "easeInOut"
       }
     },
     morphing: {
-      borderRadius: ['50%', '20%', '50%'], // Reduced morph for mobile
-      scale: [1, 1.05, 1],
+      borderRadius: ['50%', '30%', '50%'],
+      scale: [1, 1.03, 1],
       transition: {
-        duration: 4,
+        duration: 6,
         repeat: Infinity,
         ease: "easeInOut"
       }
@@ -60,22 +60,22 @@ const EnhLogo: React.FC<EnhLogoProps> = ({
 
   return (
     <div className={`relative flex items-center justify-center ${className}`}>
-      {/* Background glow - responsive adjustments */}
+      {/* Background glow */}
       <motion.div
-        className="absolute rounded-full bg-gradient-to-r from-green-900 via-green-800 to-green-500 blur-lg md:blur-xl opacity-40 md:opacity-50"
+        className="absolute rounded-full bg-gradient-to-r from-green-900 via-green-800 to-green-500 blur-lg opacity-30"
         style={{
-          width: 'calc(100% + 60px)',
-          height: 'calc(100% + 60px)',
+          width: 'calc(100% + 40px)',
+          height: 'calc(100% + 40px)',
           top: '-20%',
           left: '-30%',
           transform: 'translate(-50%, -50%)'
         }}
         animate={{
-          scale: [1, 1.1, 1], // Reduced scale for mobile
-          opacity: [0.3, 0.5, 0.3]
+          scale: [1, 1.05, 1],
+          opacity: [0.2, 0.4, 0.2]
         }}
         transition={{
-          duration: 3,
+          duration: 4,
           repeat: Infinity,
           ease: "easeInOut"
         }}
@@ -86,20 +86,20 @@ const EnhLogo: React.FC<EnhLogoProps> = ({
         className={`relative ${sizeClasses[size]} flex items-center justify-center`}
         animate={logoVariants[variant]}
       >
-        {/* Logo image - responsive sizing */}
+        {/* Logo image */}
         <motion.div 
           className="relative w-full h-full flex items-center justify-center"
           whileHover={{ 
-            scale: 1.05, // Reduced hover effect for mobile
+            scale: 1.03,
             transition: { duration: 0.3 }
           }}
         >
           <img
             src="/ramanew.png"
             alt="Ramaera Logo"
-            className="object-contain filter drop-shadow-lg md:drop-shadow-2xl"
+            className="object-contain filter drop-shadow-lg"
             style={{
-              width: '240%', // Smaller on mobile
+              width: '200%',
               height: '200%',
               maxWidth: 'none',
               maxHeight: 'none',
@@ -118,40 +118,40 @@ const EnhLogo: React.FC<EnhLogoProps> = ({
           
           {/* Flame overlay */}
           <motion.div
-            className="absolute inset-0 rounded-full opacity-5 md:opacity-10 mix-blend-overlay"
+            className="absolute inset-0 rounded-full opacity-5 mix-blend-overlay"
             animate={{
-              scale: [1, 1.03, 1] // Reduced effect for mobile
+              scale: [1, 1.02, 1]
             }}
             transition={{
-              duration: 2,
+              duration: 3,
               repeat: Infinity,
               ease: "easeInOut"
             }}
           />
         </motion.div>
 
-        {/* Particle effects - responsive */}
+        {/* Particle effects */}
         <div className="absolute inset-0 pointer-events-none">
-          {Array.from({ length: 6 }).map((_, i) => ( // Fewer particles on mobile
+          {Array.from({ length: 4 }).map((_, i) => (
             <motion.div
               key={i}
-              className="absolute w-1.5 h-1.5 md:w-2 md:h-2 bg-yellow-400 rounded-full"
+              className="absolute w-1 h-1 bg-yellow-400 rounded-full opacity-60"
               style={{
                 left: '50%',
                 top: '50%',
-                marginLeft: '-3px',
-                marginTop: '-3px'
+                marginLeft: '-2px',
+                marginTop: '-2px'
               }}
               animate={{
-                x: [0, Math.cos(i * 60 * Math.PI / 180) * 30], // Reduced distance
-                y: [0, Math.sin(i * 60 * Math.PI / 180) * 30],
+                x: [0, Math.cos(i * 90 * Math.PI / 180) * 20],
+                y: [0, Math.sin(i * 90 * Math.PI / 180) * 20],
                 opacity: [1, 0],
                 scale: [0, 1, 0]
               }}
               transition={{
-                duration: 2,
+                duration: 3,
                 repeat: Infinity,
-                delay: i * 0.2,
+                delay: i * 0.3,
                 ease: "easeOut"
               }}
             />
@@ -159,15 +159,15 @@ const EnhLogo: React.FC<EnhLogoProps> = ({
         </div>
       </motion.div>
 
-      {/* Company text - responsive */}
+      {/* Company text */}
       {showText && (
         <motion.div 
-          className="absolute -bottom-6 md:-bottom-8 left-1/2 transform -translate-x-1/2 text-center"
-          initial={{ opacity: 0, y: 10 }} // Reduced initial movement
+          className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-center"
+          initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.8 }}
+          transition={{ delay: 0.3, duration: 0.5 }}
         >
-          <div className="text-white font-bold text-xs md:text-sm font-['Orbitron'] whitespace-nowrap">
+          <div className="text-white font-bold text-sm font-['Orbitron'] whitespace-nowrap">
             RAMAERA INDUSTRIES
           </div>
         </motion.div>

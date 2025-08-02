@@ -17,35 +17,33 @@ const AnimatedSection: React.FC<AnimatedSectionProps> = ({
   stagger = false
 }) => {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: "-100px" })
+  const isInView = useInView(ref, { once: true, margin: "-50px" })
 
   const directionVariants = {
-    up: { y: 50 },
-    down: { y: -50 },
-    left: { x: 50 },
-    right: { x: -50 }
+    up: { y: 30 },
+    down: { y: -30 },
+    left: { x: 30 },
+    right: { x: -30 }
   }
 
   const variants = {
     hidden: {
       opacity: 0,
       ...directionVariants[direction],
-      scale: 0.9,
-      filter: 'blur(10px)'
+      scale: 0.95
     },
     visible: {
       opacity: 1,
       x: 0,
       y: 0,
       scale: 1,
-      filter: 'blur(0px)',
       transition: {
-        duration: 0.8,
+        duration: 0.5,
         delay,
-        ease: "easeOut",
+        ease: "easeInOut",
         ...(stagger && {
-          staggerChildren: 0.1,
-          delayChildren: 0.2
+          staggerChildren: 0.05,
+          delayChildren: 0.1
         })
       }
     }

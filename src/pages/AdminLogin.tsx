@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { useAdminStore } from "../store/adminStore";
-import {useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { Mail, Lock, Eye, EyeOff, Shield, Sparkles, ArrowRight } from "lucide-react";
+import EnhLogo from "../components/EnhLogo";
 
 const AdminLogin = () => {
   const [formData, setFormData] = useState({
@@ -31,6 +34,7 @@ const AdminLogin = () => {
   };
 
   const navigate = useNavigate();
+  
   const handleLoginSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const { email, password } = formData;
@@ -45,8 +49,7 @@ const AdminLogin = () => {
 
     try {
       await login(email, password);
-      // Optional: redirect after successful login
-      navigate('/admin')
+      navigate('/admin');
     } catch {
       // Error is handled via Zustand state
     } finally {
@@ -78,142 +81,253 @@ const AdminLogin = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 bg-gray-100">
-      <div className="w-full max-w-md bg-white rounded-2xl shadow-2xl overflow-hidden transition-all duration-300 transform hover:shadow-3xl">
-        <div className="relative bg-gradient-to-r from-blue-600 to-indigo-700 p-8 text-center overflow-hidden cyber-card">
-          <div className="absolute inset-0 opacity-10 bg-[url('data:image/svg+xml;base64,...')]"></div>
-          <h1 className="text-3xl font-bold text-white relative z-10">Ramaera Industries</h1>
-          <p className="text-blue-100 text-sm mt-2 relative z-10">Admin Portal</p>
+    <div className="min-h-screen flex items-center justify-center px-4 bg-black relative overflow-hidden">
+      {/* Background Effects */}
+      <div className="absolute inset-0 z-0">
+        <img
+          src="https://images.pexels.com/photos/1108101/pexels-photo-1108101.jpeg?auto=compress&cs=tinysrgb&w=1920"
+          alt="Admin Background"
+          className="w-full h-full object-cover opacity-20"
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-black via-primary-600/10 to-black"></div>
+      </div>
+      <div className="absolute inset-0 cyber-grid-bg opacity-20 z-5"></div>
+
+      <motion.div 
+        className="w-full max-w-md cyber-card overflow-hidden relative z-10"
+        initial={{ scale: 0.9, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      >
+        {/* Enhanced Header */}
+        <div className="relative bg-gradient-to-r from-primary-600/20 to-accent-500/20 p-8 text-center overflow-hidden border-b border-white/20">
+          <div className="absolute inset-0 opacity-20">
+            <img 
+              src="https://images.pexels.com/photos/3862132/pexels-photo-3862132.jpeg?auto=compress&cs=tinysrgb&w=400"
+              alt="Admin Header"
+              className="w-full h-full object-cover"
+            />
+          </div>
+          <div className="relative z-10">
+            <motion.div
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ delay: 0.2, type: "spring" }}
+              className="mb-4"
+            >
+              <EnhLogo size="md" variant="floating" />
+            </motion.div>
+            <h1 className="text-2xl font-bold text-white mb-2 font-['Orbitron'] holographic">
+              RAMAERA INDUSTRIES
+            </h1>
+            <div className="flex items-center justify-center space-x-2">
+              <Shield className="h-4 w-4 text-accent-400" />
+              <p className="text-accent-400 text-sm font-medium">ADMIN PORTAL</p>
+            </div>
+          </div>
         </div>
 
         <div className="p-8">
-          {!isForgotPassword ? (
-            <form onSubmit={handleLoginSubmit} className="space-y-6">
-              {(localError || error) && (
-                <div className="bg-red-50 border-l-4 border-red-500 p-4 rounded-lg flex items-start animate-fade-in">
-                  <svg className="h-5 w-5 text-red-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path
-                      fillRule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
-                      clipRule="evenodd"
+          <AnimatePresence mode="wait">
+            {!isForgotPassword ? (
+              <motion.form 
+                key="login"
+                onSubmit={handleLoginSubmit} 
+                className="space-y-6"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 20 }}
+                transition={{ duration: 0.3 }}
+              >
+                {(localError || error) && (
+                  <motion.div 
+                    className="cyber-card p-4 border-red-500/50 bg-red-500/10"
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                  >
+                    <div className="flex items-center space-x-2">
+                      <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+                      <p className="text-red-400 text-sm">{localError || error}</p>
+                    </div>
+                  </motion.div>
+                )}
+
+                <div className="space-y-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-300 mb-2 flex items-center space-x-2">
+                      <Mail className="h-4 w-4 text-accent-400" />
+                      <span>Email address</span>
+                    </label>
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 bg-black/50 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent-500/50 focus:border-accent-500/50 transition-all duration-200 hover:border-white/40"
+                      placeholder="admin@ramaera.in"
+                      required
                     />
-                  </svg>
-                  <p className="ml-3 text-sm text-red-700">{localError || error}</p>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-300 mb-2 flex items-center space-x-2">
+                      <Lock className="h-4 w-4 text-accent-400" />
+                      <span>Password</span>
+                    </label>
+                    <div className="relative">
+                      <input
+                        type={showPassword ? "text" : "password"}
+                        name="password"
+                        value={formData.password}
+                        onChange={handleChange}
+                        className="w-full px-4 py-3 bg-black/50 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent-500/50 focus:border-accent-500/50 transition-all duration-200 hover:border-white/40 pr-12"
+                        placeholder="Enter your password"
+                        required
+                      />
+                      <motion.button
+                        type="button"
+                        onClick={togglePasswordVisibility}
+                        className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-white transition-colors p-1 rounded"
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
+                      >
+                        {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                      </motion.button>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center justify-between text-sm">
+                    <label className="flex items-center space-x-2 cursor-pointer">
+                      <input
+                        type="checkbox"
+                        name="remember"
+                        checked={formData.remember}
+                        onChange={handleChange}
+                        className="w-4 h-4 bg-black/50 border border-white/20 rounded focus:ring-accent-500 text-accent-500"
+                      />
+                      <span className="text-gray-300">Remember me</span>
+                    </label>
+                    <motion.button
+                      type="button"
+                      onClick={() => setIsForgotPassword(true)}
+                      className="text-accent-400 hover:text-accent-300 transition-colors"
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      Forgot password?
+                    </motion.button>
+                  </div>
+
+                  <motion.button
+                    type="submit"
+                    disabled={loading || isSubmitting}
+                    className="w-full bg-gradient-to-r from-white to-accent-500 text-black py-3 px-4 rounded-xl hover:from-gray-200 hover:to-accent-400 focus:outline-none focus:ring-2 focus:ring-accent-500 transition-all duration-200 font-bold flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    {loading || isSubmitting ? (
+                      <>
+                        <div className="w-5 h-5 border-2 border-black border-t-transparent rounded-full animate-spin"></div>
+                        <span>Logging in...</span>
+                      </>
+                    ) : (
+                      <>
+                        <Shield className="h-5 w-5" />
+                        <span>ACCESS ADMIN PORTAL</span>
+                        <ArrowRight className="h-5 w-5" />
+                      </>
+                    )}
+                  </motion.button>
                 </div>
-              )}
+              </motion.form>
+            ) : (
+              <motion.form 
+                key="forgot"
+                onSubmit={handleForgotPasswordSubmit} 
+                className="space-y-6"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.3 }}
+              >
+                {forgotMessage && (
+                  <motion.div 
+                    className="cyber-card p-4 border-accent-500/50 bg-accent-500/10"
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                  >
+                    <div className="flex items-center space-x-2">
+                      <div className="w-2 h-2 bg-accent-500 rounded-full"></div>
+                      <p className="text-accent-400 text-sm">{forgotMessage}</p>
+                    </div>
+                  </motion.div>
+                )}
 
-              <div>
-                <label className="block text-sm font-medium text-gray-700">Email address</label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="text-black mt-1 w-full border border-gray-300 rounded-lg shadow-sm px-3 py-2 focus:outline-none focus:ring focus:ring-blue-500"
-                  required
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700">Password</label>
-                <div className="relative">
+                <div>
+                  <label className="block text-sm font-medium text-gray-300 mb-2 flex items-center space-x-2">
+                    <Mail className="h-4 w-4 text-accent-400" />
+                    <span>Enter your registered email</span>
+                  </label>
                   <input
-                    type={showPassword ? "text" : "password"}
-                    name="password"
-                    value={formData.password}
-                    onChange={handleChange}
-                    className="text-black mt-1 w-full border border-gray-300 rounded-lg shadow-sm px-3 py-2 focus:outline-none focus:ring focus:ring-blue-500"
+                    type="email"
+                    value={forgotEmail}
+                    onChange={(e) => setForgotEmail(e.target.value)}
+                    className="w-full px-4 py-3 bg-black/50 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent-500/50 focus:border-accent-500/50 transition-all duration-200 hover:border-white/40"
+                    placeholder="admin@ramaera.in"
                     required
                   />
-                  <button
+                </div>
+
+                <div className="flex items-center justify-between text-sm">
+                  <motion.button
                     type="button"
-                    onClick={togglePasswordVisibility}
-                    className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-500"
+                    onClick={() => {
+                      setIsForgotPassword(false);
+                      setForgotEmail("");
+                      setForgotMessage("");
+                    }}
+                    className="text-gray-400 hover:text-white transition-colors flex items-center space-x-1"
+                    whileHover={{ scale: 1.05 }}
                   >
-                    {showPassword ? "🙈" : "👁️"}
-                  </button>
+                    <ArrowRight className="h-4 w-4 rotate-180" />
+                    <span>Back to login</span>
+                  </motion.button>
                 </div>
-              </div>
 
-              <div className="flex items-center justify-between text-sm">
-                <label className="flex items-center">
-                  <input
-                    type="checkbox"
-                    name="remember"
-                    checked={formData.remember}
-                    onChange={handleChange}
-                    className="mr-2"
-                  />
-                  Remember me
-                </label>
-                <button
-                  type="button"
-                  onClick={() => setIsForgotPassword(true)}
-                  className="text-blue-600 hover:underline"
+                <motion.button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full bg-gradient-to-r from-accent-600 to-accent-500 text-white py-3 px-4 rounded-xl hover:from-accent-700 hover:to-accent-600 focus:outline-none focus:ring-2 focus:ring-accent-500 transition-all duration-200 font-bold flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
                 >
-                  Forgot password?
-                </button>
-              </div>
-
-              <button
-                type="submit"
-                disabled={loading || isSubmitting}
-                className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              >
-                {loading || isSubmitting ? "Logging in..." : "Login"}
-              </button>
-            </form>
-          ) : (
-            <form onSubmit={handleForgotPasswordSubmit} className="space-y-6">
-              {forgotMessage && (
-                <div className="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-lg flex items-start animate-fade-in">
-                  <svg className="h-5 w-5 text-blue-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path
-                      fillRule="evenodd"
-                      d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2h-1V9z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  <p className="ml-3 text-sm text-blue-700">{forgotMessage}</p>
-                </div>
-              )}
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700">Enter your registered email</label>
-                <input
-                  type="email"
-                  value={forgotEmail}
-                  onChange={(e) => setForgotEmail(e.target.value)}
-                  className="text-black mt-1 w-full border border-gray-300 rounded-lg shadow-sm px-3 py-2 focus:outline-none focus:ring focus:ring-blue-500"
-                  required
-                />
-              </div>
-
-              <div className="flex items-center justify-between text-sm">
-                <button
-                  type="button"
-                  onClick={() => {
-                    setIsForgotPassword(false);
-                    setForgotEmail("");
-                    setForgotMessage("");
-                  }}
-                  className="text-gray-600 hover:underline"
-                >
-                  Back to login
-                </button>
-              </div>
-
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-              >
-                {isSubmitting ? "Sending..." : "Send Reset Link"}
-              </button>
-            </form>
-          )}
+                  {isSubmitting ? (
+                    <>
+                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                      <span>Sending...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Mail className="h-5 w-5" />
+                      <span>SEND RESET LINK</span>
+                    </>
+                  )}
+                </motion.button>
+              </motion.form>
+            )}
+          </AnimatePresence>
         </div>
-      </div>
+
+        {/* Enhanced Footer */}
+        <div className="p-6 bg-gradient-to-r from-white/5 to-accent-500/5 border-t border-white/20 text-center">
+          <div className="flex items-center justify-center space-x-2 mb-2">
+            <Sparkles className="h-4 w-4 text-accent-400" />
+            <p className="text-sm text-gray-400">Secure Admin Access</p>
+          </div>
+          <p className="text-xs text-gray-500">
+            Managing India's Industrial Revolution
+          </p>
+        </div>
+      </motion.div>
     </div>
   );
 };

@@ -27,6 +27,7 @@ const AdminLogin = () => {
       ...prev,
       [name]: type === "checkbox" ? checked : value,
     }));
+    setLocalError(""); // Clear error when user types
   };
 
   const togglePasswordVisibility = () => {
@@ -166,6 +167,7 @@ const AdminLogin = () => {
                       className="w-full px-4 py-3 bg-black/50 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent-500/50 focus:border-accent-500/50 transition-all duration-200 hover:border-white/40"
                       placeholder="admin@ramaera.in"
                       required
+                      autoComplete="email"
                     />
                   </div>
 
@@ -183,6 +185,7 @@ const AdminLogin = () => {
                         className="w-full px-4 py-3 bg-black/50 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent-500/50 focus:border-accent-500/50 transition-all duration-200 hover:border-white/40 pr-12"
                         placeholder="Enter your password"
                         required
+                        autoComplete="current-password"
                       />
                       <motion.button
                         type="button"
@@ -274,6 +277,7 @@ const AdminLogin = () => {
                     className="w-full px-4 py-3 bg-black/50 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent-500/50 focus:border-accent-500/50 transition-all duration-200 hover:border-white/40"
                     placeholder="admin@ramaera.in"
                     required
+                    autoComplete="email"
                   />
                 </div>
 

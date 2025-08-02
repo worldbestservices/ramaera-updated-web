@@ -142,14 +142,14 @@ const ResetPassword = () => {
                   type={showPassword ? "text" : "password"}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full px-4 py-3 bg-black/50 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent-500/50 focus:border-accent-500/50 transition-all duration-200 hover:border-white/40 pr-12"
+                  className="w-full px-4 py-3 bg-gray-900/80 border border-white/30 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-accent-500 transition-all duration-200 hover:border-white/50 pr-12 relative z-10"
                   placeholder="Enter new password"
                   required
                 />
                 <motion.button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-white transition-colors p-1 rounded"
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-white transition-colors p-1 rounded z-20"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                 >
@@ -168,14 +168,14 @@ const ResetPassword = () => {
                   type={showConfirmPassword ? "text" : "password"}
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
-                  className="w-full px-4 py-3 bg-black/50 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent-500/50 focus:border-accent-500/50 transition-all duration-200 hover:border-white/40 pr-12"
+                  className="w-full px-4 py-3 bg-gray-900/80 border border-white/30 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-accent-500 transition-all duration-200 hover:border-white/50 pr-12 relative z-10"
                   placeholder="Confirm new password"
                   required
                 />
                 <motion.button
                   type="button"
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-white transition-colors p-1 rounded"
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-white transition-colors p-1 rounded z-20"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                 >
@@ -187,7 +187,7 @@ const ResetPassword = () => {
             <motion.button
               type="submit"
               disabled={submitting}
-              className="w-full bg-gradient-to-r from-white to-accent-500 text-black py-3 px-4 rounded-xl hover:from-gray-200 hover:to-accent-400 focus:outline-none focus:ring-2 focus:ring-accent-500 transition-all duration-200 font-bold flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full bg-gradient-to-r from-white to-accent-500 text-black py-3 px-4 rounded-xl hover:from-gray-200 hover:to-accent-400 focus:outline-none focus:ring-2 focus:ring-accent-500 transition-all duration-200 font-bold flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed relative z-10"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >

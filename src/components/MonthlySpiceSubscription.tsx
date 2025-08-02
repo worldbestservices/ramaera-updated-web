@@ -250,7 +250,7 @@ export default function MonthlySpiceSubscription() {
                         value={level}
                         onChange={(e) => setLevel(e.target.value)}
                         required
-                        className="w-full px-4 py-3 bg-black/50 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-accent-500/50 focus:border-accent-500/50 transition-all duration-200 hover:border-white/40"
+                        className="w-full px-4 py-3 bg-gray-900/80 border border-white/30 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-accent-500 transition-all duration-200 hover:border-white/50 relative z-10"
                       >
                         <option value="">Select your type</option>
                         <option value="Share Holder">Share Holder</option>
@@ -276,7 +276,7 @@ export default function MonthlySpiceSubscription() {
                           onChange={(e) => setRmPwId(e.target.value)}
                           required
                           placeholder="Enter your ID"
-                          className="w-full px-4 py-3 bg-black/50 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent-500/50 focus:border-accent-500/50 transition-all duration-200 hover:border-white/40"
+                          className="w-full px-4 py-3 bg-gray-900/80 border border-white/30 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-accent-500 transition-all duration-200 hover:border-white/50 relative z-10"
                         />
                       </motion.div>
                     )}
@@ -296,7 +296,7 @@ export default function MonthlySpiceSubscription() {
                           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                           required
                           placeholder="Jane Doe"
-                          className="w-full px-4 py-3 bg-black/50 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent-500/50 focus:border-accent-500/50 transition-all duration-200 hover:border-white/40"
+                          className="w-full px-4 py-3 bg-gray-900/80 border border-white/30 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-accent-500 transition-all duration-200 hover:border-white/50 relative z-10"
                         />
                       </div>
 
@@ -313,7 +313,7 @@ export default function MonthlySpiceSubscription() {
                           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                           required
                           placeholder="jane@example.com"
-                          className="w-full px-4 py-3 bg-black/50 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent-500/50 focus:border-accent-500/50 transition-all duration-200 hover:border-white/40"
+                          className="w-full px-4 py-3 bg-gray-900/80 border border-white/30 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-accent-500 transition-all duration-200 hover:border-white/50 relative z-10"
                         />
                       </div>
 
@@ -331,7 +331,7 @@ export default function MonthlySpiceSubscription() {
                           required
                           placeholder="560001"
                           maxLength={6}
-                          className="w-full px-4 py-3 bg-black/50 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent-500/50 focus:border-accent-500/50 transition-all duration-200 hover:border-white/40"
+                          className="w-full px-4 py-3 bg-gray-900/80 border border-white/30 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-accent-500 transition-all duration-200 hover:border-white/50 relative z-10"
                         />
                       </div>
 
@@ -349,7 +349,7 @@ export default function MonthlySpiceSubscription() {
                           required
                           placeholder="9876543210"
                           maxLength={10}
-                          className="w-full px-4 py-3 bg-black/50 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent-500/50 focus:border-accent-500/50 transition-all duration-200 hover:border-white/40"
+                          className="w-full px-4 py-3 bg-gray-900/80 border border-white/30 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-accent-500 transition-all duration-200 hover:border-white/50 relative z-10"
                         />
                       </div>
                     </div>
@@ -367,7 +367,7 @@ export default function MonthlySpiceSubscription() {
                         required
                         placeholder="123 Spice Street, Aroma City, State"
                         rows={3}
-                        className="w-full px-4 py-3 bg-black/50 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent-500/50 focus:border-accent-500/50 transition-all duration-200 hover:border-white/40 resize-none"
+                        className="w-full px-4 py-3 bg-gray-900/80 border border-white/30 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-accent-500 transition-all duration-200 hover:border-white/50 resize-none relative z-10"
                       />
                     </div>
 
@@ -384,7 +384,7 @@ export default function MonthlySpiceSubscription() {
                         onChange={(e) => setFormData({ ...formData, altMobile: e.target.value })}
                         placeholder="9876543210"
                         maxLength={10}
-                        className="w-full px-4 py-3 bg-black/50 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent-500/50 focus:border-accent-500/50 transition-all duration-200 hover:border-white/40"
+                        className="w-full px-4 py-3 bg-gray-900/80 border border-white/30 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-accent-500 transition-all duration-200 hover:border-white/50 relative z-10"
                       />
                     </div>
 
@@ -422,7 +422,7 @@ export default function MonthlySpiceSubscription() {
                         Select Your Spice Combo
                       </label>
                       <select
-                        className="w-full px-4 py-3 bg-black/50 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-accent-500/50 focus:border-accent-500/50 transition-all duration-200 hover:border-white/40"
+                        className="w-full px-4 py-3 bg-gray-900/80 border border-white/30 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-accent-500 transition-all duration-200 hover:border-white/50 relative z-10"
                         value={formData.combo}
                         onChange={handleComboChange}
                         required
@@ -451,7 +451,7 @@ export default function MonthlySpiceSubscription() {
                         <motion.button
                           type="button"
                           onClick={() => setFormData({ ...formData, quantity: Math.max(1, formData.quantity - 1) })}
-                          className="w-10 h-10 bg-black/50 hover:bg-white/10 border border-white/20 rounded-xl text-white transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center font-bold"
+                          className="w-10 h-10 bg-gray-900/80 hover:bg-white/10 border border-white/30 rounded-xl text-white transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center font-bold relative z-10"
                           disabled={formData.quantity <= 1}
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
@@ -464,7 +464,7 @@ export default function MonthlySpiceSubscription() {
                         <motion.button
                           type="button"
                           onClick={() => setFormData({ ...formData, quantity: formData.quantity + 1 })}
-                          className="w-10 h-10 bg-black/50 hover:bg-white/10 border border-white/20 rounded-xl text-white transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center font-bold"
+                          className="w-10 h-10 bg-gray-900/80 hover:bg-white/10 border border-white/30 rounded-xl text-white transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center font-bold relative z-10"
                           disabled={formData.quantity >= 5}
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
@@ -509,7 +509,7 @@ export default function MonthlySpiceSubscription() {
                       <motion.button 
                         type="button" 
                         onClick={prevStep} 
-                        className="px-6 py-3 bg-black/50 hover:bg-white/10 border border-white/20 text-white rounded-xl transition-all duration-200 font-medium"
+                        className="px-6 py-3 bg-gray-900/80 hover:bg-white/10 border border-white/30 text-white rounded-xl transition-all duration-200 font-medium relative z-10"
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                       >
@@ -518,7 +518,7 @@ export default function MonthlySpiceSubscription() {
                       <motion.button 
                         type="submit" 
                         disabled={!formData.combo} 
-                        className="px-6 py-3 bg-gradient-to-r from-white to-accent-500 text-black rounded-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed font-bold flex items-center"
+                        className="px-6 py-3 bg-gradient-to-r from-white to-accent-500 text-black rounded-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed font-bold flex items-center relative z-10"
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                       >
@@ -602,7 +602,7 @@ export default function MonthlySpiceSubscription() {
                           onChange={e => setFormData({ ...formData, upiId: e.target.value })}
                           required
                           placeholder="yourname@upi"
-                          className="w-full px-4 py-3 bg-black/50 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent-500/50 focus:border-accent-500/50 transition-all duration-200 hover:border-white/40"
+                          className="w-full px-4 py-3 bg-gray-900/80 border border-white/30 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-accent-500 transition-all duration-200 hover:border-white/50 relative z-10"
                         />
                       </motion.div>
                     )}
@@ -620,7 +620,7 @@ export default function MonthlySpiceSubscription() {
                       <motion.button
                         type="button"
                         onClick={prevStep}
-                        className="px-6 py-3 bg-black/50 hover:bg-white/10 border border-white/20 text-white rounded-xl transition-all duration-200 font-medium"
+                        className="px-6 py-3 bg-gray-900/80 hover:bg-white/10 border border-white/30 text-white rounded-xl transition-all duration-200 font-medium relative z-10"
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                       >
@@ -629,7 +629,7 @@ export default function MonthlySpiceSubscription() {
                       <motion.button
                         type="submit"
                         disabled={!formData.paymentMethod || (formData.paymentMethod === 'upi' && !formData.upiId) || isSubmitting}
-                        className="px-6 py-3 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed font-bold flex items-center"
+                        className="px-6 py-3 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed font-bold flex items-center relative z-10"
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                       >
@@ -712,7 +712,7 @@ export default function MonthlySpiceSubscription() {
                           setLevel('');
                           setRmPwId('');
                         }}
-                        className="px-8 py-3 bg-gradient-to-r from-white to-accent-500 text-black rounded-xl transition-all duration-200 font-bold flex items-center mx-auto"
+                        className="px-8 py-3 bg-gradient-to-r from-white to-accent-500 text-black rounded-xl transition-all duration-200 font-bold flex items-center mx-auto relative z-10"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                       >
@@ -740,7 +740,7 @@ export default function MonthlySpiceSubscription() {
                           setLevel('');
                           setRmPwId('');
                         }}
-                        className="px-8 py-3 bg-gradient-to-r from-red-600 to-pink-600 text-white rounded-xl transition-all duration-200 font-bold"
+                        className="px-8 py-3 bg-gradient-to-r from-red-600 to-pink-600 text-white rounded-xl transition-all duration-200 font-bold relative z-10"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                       >

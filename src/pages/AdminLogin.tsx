@@ -21,7 +21,7 @@ const AdminLogin = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value, type, checked } = e.target;
+    const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
       [name]: value,
@@ -67,12 +67,12 @@ const AdminLogin = () => {
     setIsSubmitting(true);
     try {
       await forgotPassword(forgotEmail);
-      setForgotMessage("If an account exists, a reset link has been sent.");
+      setForgotMessage("If an account exists, a reset link has been sent to your email.");
       setTimeout(() => {
         setIsForgotPassword(false);
         setForgotEmail("");
         setForgotMessage("");
-      }, 2500);
+      }, 3000);
     } catch {
       setForgotMessage("Failed to send reset link. Try again.");
     } finally {
@@ -154,7 +154,7 @@ const AdminLogin = () => {
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 bg-gray-900/80 border border-white/30 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-accent-500 transition-all duration-200 hover:border-white/50 relative z-10"
+                      className="w-full px-4 py-3 bg-black/50 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent-500/50 focus:border-accent-500/50 transition-all duration-200 hover:border-white/40"
                       placeholder="admin@ramaera.in"
                       required
                       autoComplete="email"
@@ -172,7 +172,7 @@ const AdminLogin = () => {
                         name="password"
                         value={formData.password}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 bg-gray-900/80 border border-white/30 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-accent-500 transition-all duration-200 hover:border-white/50 pr-12 relative z-10"
+                        className="w-full px-4 py-3 bg-black/50 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent-500/50 focus:border-accent-500/50 transition-all duration-200 hover:border-white/40 pr-12"
                         placeholder="Enter your password"
                         required
                         autoComplete="current-password"
@@ -180,7 +180,7 @@ const AdminLogin = () => {
                       <motion.button
                         type="button"
                         onClick={togglePasswordVisibility}
-                        className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-white transition-colors p-1 rounded z-20"
+                        className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-white transition-colors p-1 rounded"
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}
                       >
@@ -203,7 +203,7 @@ const AdminLogin = () => {
                   <motion.button
                     type="submit"
                     disabled={loading || isSubmitting}
-                    className="w-full bg-gradient-to-r from-white to-accent-500 text-black py-3 px-4 rounded-xl hover:from-gray-200 hover:to-accent-400 focus:outline-none focus:ring-2 focus:ring-accent-500 transition-all duration-200 font-bold flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed relative z-10"
+                    className="w-full bg-gradient-to-r from-white to-accent-500 text-black py-3 px-4 rounded-xl hover:from-gray-200 hover:to-accent-400 focus:outline-none focus:ring-2 focus:ring-accent-500 transition-all duration-200 font-bold flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
@@ -254,7 +254,7 @@ const AdminLogin = () => {
                     type="email"
                     value={forgotEmail}
                     onChange={(e) => setForgotEmail(e.target.value)}
-                    className="w-full px-4 py-3 bg-gray-900/80 border border-white/30 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-accent-500 transition-all duration-200 hover:border-white/50 relative z-10"
+                    className="w-full px-4 py-3 bg-black/50 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent-500/50 focus:border-accent-500/50 transition-all duration-200 hover:border-white/40"
                     placeholder="admin@ramaera.in"
                     required
                     autoComplete="email"
@@ -280,7 +280,7 @@ const AdminLogin = () => {
                 <motion.button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-gradient-to-r from-accent-600 to-accent-500 text-white py-3 px-4 rounded-xl hover:from-accent-700 hover:to-accent-600 focus:outline-none focus:ring-2 focus:ring-accent-500 transition-all duration-200 font-bold flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed relative z-10"
+                  className="w-full bg-gradient-to-r from-accent-600 to-accent-500 text-white py-3 px-4 rounded-xl hover:from-accent-700 hover:to-accent-600 focus:outline-none focus:ring-2 focus:ring-accent-500 transition-all duration-200 font-bold flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >

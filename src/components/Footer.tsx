@@ -313,7 +313,7 @@ const Footer = () => {
               <span className="text-gray-600">•</span>
               <Link to="/contact" className="text-gray-500 hover:text-gray-300 transition-colors">
                 Contact Us
-              </Link>
+              </a>
             </div>
           </div>
         </motion.div>
